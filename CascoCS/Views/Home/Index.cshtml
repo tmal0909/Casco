@@ -1,0 +1,386 @@
+﻿@model CascoCS.Models.ReservationMD
+
+<!DOCTYPE html>
+
+<html lang="zh-hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="好事多清潔服務, 好事多, 清潔服務, 裝修, 細清, 打掃, 清潔, 專案, 玻璃">
+    <meta name="keywords" content="好事多清潔服務, 好事多, 清潔服務, 裝修, 細清, 打掃, 清潔, 專案, 玻璃" />
+    <title>好事多清潔服務</title>
+
+    <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@Url.Content("~/Content/images/favicon.ico")" type="image/x-icon">
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/ionicons.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/jquery.loading.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Animate.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/MainStyle.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/ResponsiveStyle.css")" />
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryPlugin")
+    @Scripts.Render("~/bundles/googleJs")
+    @*@Scripts.Render("~/bundles/bootstrap") 透過 .Net 產生 Bundle 時會出現異常 *@
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-popper.js")"></script>
+    <script src="@Url.Content("~/Scripts/respond.js")"></script>
+    @Scripts.Render("~/bundles/siteJs")
+
+    @* 載入 Google Map *@
+    <script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn6LIijFVZ93yX1tfeQsJkObTtrEfouA8&callback=ConstructMap"></script>
+
+    <!--  Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117752485-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-117752485-1');
+    </script>
+</head>
+<body class="">
+    @* 頁首 *@
+    <header>
+        <div class="headerIntro animated fadeInRightBig">
+            <h1>歡迎來到好事多</h1>
+            <h2>我們提供家事清潔服務</h2>
+            <a class="btn-bright nav-link-item" href="#section-AboutUs">了解更多</a>
+        </div>
+    </header>
+
+    @* 導覽列 *@
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navigationBar">
+        <div class="row navRow">
+            <div class="col-md-3 col-sm-4 col-5 navTitleBlock">
+                <img class="navbar-logo" alt="logo" src="@Url.Content("~/Content/images/logo.png")" />
+                <a class="navbar-brand" href="#">好事多</a>
+            </div>
+
+            <div class="col-md-9 col-sm-8 col-7 navItemBlock">
+                <div class="navItem">
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbarColor01">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-item" href="#section-AboutUs">關於我們</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-item" href="#section-Instance">案件實例</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-item" href="#section-ServiceIntro">服務項目</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-item" href="#section-Reservation">預約估價</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-item" href="#section-ContactUs">聯絡我們</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    @* 關於我們 *@
+    <section class="container-fluid" id="section-AboutUs">
+        <div class="paddingBlock">
+            <div class="intro">
+                <div class="aboutUs-title">好事多 - 家事清潔服務</div>
+                <div class="divider-center"></div>
+                <div class="text-box">
+                    <p>
+                        好事多創立於2017年，是一間非常年輕的公司。
+                        我們致力於提供專業清潔服務，每件任務均由專人前往評估，與客戶進行完善溝通，以確保預期成效。
+                        訂單成立後，將由專業人員率領團隊執行，並提供售後服務。
+                    </p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="row  justify-content-around">
+                    <div class="col-12 col-sm-6">
+                        <div class="featureUnit">
+                            <div class="feature-title">專業流程</div>
+                            <div class="text-box">
+                                <p>我們非常重視客戶感受，對於每位客戶，我們都將派遣專員前往估價與解說，待訂單確認後，我們將如期完成任務，並提供售後服務。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <div class="featureUnit">
+                            <div class="feature-title">品牌價值</div>
+                            <div class="text-box">
+                                <p>每位專員均需通過內部審核才可提供服務，並不定時舉辦專員教育訓練。任務完成時，均由督導進行驗收，確保清潔品質。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <div class="featureUnit">
+                            <div class="feature-title">環保洗劑</div>
+                            <div class="text-box">
+                                <p>家具材質種類繁多，若誤用洗劑，將有可能導致家具毀損。因此，我們提供各種專業洗劑(或由客戶指定)，避免家具毀損。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <div class="featureUnit">
+                            <div class="feature-title">量身訂做</div>
+                            <div class="text-box">
+                                <p>對於不同的客戶，我們提供客製化的清潔方案，以符合客戶需求。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @* 案件實例  *@
+    <section class="container-fluid" id="section-Instance">
+        <div id="carouselInstance" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-block w-100 carousel-background">
+                        <img class="caseImg" src="@Url.Content("~/Content/images/instance-window.jpg")" alt="案件實例 - 玻璃清潔">
+                    </div>
+                    <div class="carousel-caption d-block">
+                        <h5>案件實例 - 玻璃清潔</h5>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="d-block w-100 carousel-background">
+                        <img class="caseImg" src="@Url.Content("~/Content/images/instance-bathroom.jpg")" alt="案件實例 - 浴室清潔">
+                    </div>
+                    <div class="carousel-caption d-block">
+                        <h5>案件實例 - 浴室清潔</h5>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="d-block w-100 carousel-background">
+                        <img class="caseImg" src="@Url.Content("~/Content/images/instance-decoration.jpg")" alt="案件實例 - 裝修細清">
+                    </div>
+                    <div class="carousel-caption d-block">
+                        <h5>案件實例 - 裝修細清</h5>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="d-block w-100 carousel-background">
+                        <img class="caseImg" src="@Url.Content("~/Content/images/instance-floor.jpg")" alt="案件實例 - 地板清潔">
+                    </div>
+                    <div class="carousel-caption d-block">
+                        <h5>案件實例 - 地板清潔</h5>
+                    </div>
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselInstance" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#carouselInstance" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
+    @* 服務項目 *@
+    <section class="container-fluid" id="section-ServiceIntro">
+        @* 電腦版 *@
+        <div class="d-none d-md-block">
+            <div class="row serviceIntro">
+                <div class="col-md-9">
+                    <div class="serviceIntro-Unit is-display" id="serviceIntro-Unit-Desktop-Window">@Html.Partial("serviceIntroWindow")</div>
+
+                    <div class="serviceIntro-Unit" id="serviceIntro-Unit-Desktop-Decoration">@Html.Partial("serviceIntroDecoration")</div>
+
+                    <div class="serviceIntro-Unit" id="serviceIntro-Unit-Desktop-Default">...</div>
+                </div>
+
+                <div class="col-md-3 serviceIntro-List">
+                    <div class="serviceIntro-List-Title">服務項目</div>
+                    <div class="divider"></div>
+                    <div class="serviceIntro-List-Item is-active" data-target="window">玻璃清潔</div>
+                    <div class="serviceIntro-List-Item" data-target="decoration">裝修細清</div>
+                    <div class="serviceIntro-List-Item" data-target="default">...</div>
+                </div>
+            </div>
+        </div>
+
+        @* 手機板 *@
+        <div class="d-block d-md-none">
+            <div id="serviceIntro-Accordion">
+                <div class="card">
+                    <div class="card-header" id="serviceIntro-Head-Window">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapseBtn" data-toggle="collapse" data-target="#serviceIntro-Unit-Window" aria-expanded="true" aria-controls="serviceIntro-Unit-Window">玻璃清潔</button>
+                        </h5>
+                    </div>
+
+                    <div id="serviceIntro-Unit-Window" class="collapse" aria-labelledby="serviceIntro-Head-Window" data-parent="#serviceIntro-Accordion">
+                        <div class="card-body">@Html.Partial("serviceIntroWindow")</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="serviceIntro-Head-Decoration">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapseBtn collapsed" value='test' data-toggle="collapse" data-target="#serviceIntro-Unit-Decoration" aria-expanded="false" aria-controls="serviceIntro-Unit-Decoration">裝修細清</button>
+                        </h5>
+                    </div>
+                    <div id="serviceIntro-Unit-Decoration" class="collapse" aria-labelledby="serviceIntro-Head-Decoration" data-parent="#serviceIntro-Accordion">
+                        <div class="card-body">@Html.Partial("serviceIntroDecoration")</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="serviceIntro-Head-Default">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapseBtn collapsed" data-toggle="collapse" data-target="#serviceIntro-Unit-Default" aria-expanded="false" aria-controls="serviceIntro-Unit-Default">...</button>
+                        </h5>
+                    </div>
+                    <div id="serviceIntro-Unit-Default" class="collapse" aria-labelledby="serviceIntro-Head-Default" data-parent="#serviceIntro-Accordion">
+                        <div class="card-body">...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @* 預約估價 *@
+    <section class="container-fluid" id="section-Reservation">
+        <div class="paddingBlock">
+            <div class="row justify-content-around">
+                <div class="col-md-6 col-sm-12 col-12 reservation-Block">
+                    <div class="reservationFlow">
+                        <div class="reservation-Title">預約流程</div>
+                        <div class="divider-left"></div>
+                        <div class="reservation-List">
+                            <div class="reservation-List-Item"><span class="reservation-Icon ion-ios-list"></span>填寫預約表單</div>
+                            <div class="arrow-down ion-arrow-down-b"></div>
+                            <div class="reservation-List-Item"><span class="reservation-Icon ion-ios-telephone-outline"></span>專員聯絡</div>
+                            <div class="arrow-down ion-arrow-down-b"></div>
+                            <div class="reservation-List-Item"><span class="reservation-Icon ion-social-usd"></span>現場估價</div>
+                            <div class="arrow-down ion-arrow-down-b"></div>
+                            <div class="reservation-List-Item"><span class="reservation-Icon ion-ios-checkmark"></span>前一日確認預約</div>
+                            <div class="arrow-down ion-arrow-down-b"></div>
+                            <div class="reservation-List-Item"><span class="reservation-Icon ion-ios-people"></span>當日到府服務</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 col-12 reservation-Block">
+                    <div class="reservationForm">
+                        @using (Ajax.BeginForm("CreateReservation", "Home", new AjaxOptions()
+                        {
+                            HttpMethod = "POST",
+                            OnBegin = "OnBegin",
+                            OnSuccess = "OnSuccess",
+                            OnFailure = "OnFailure"
+                        }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group">
+                                <p class="form-title">預約表單</p>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入您的姓名" } })
+                                @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.EditorFor(x => x.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "請填寫您的手機號碼 (09XXXXXXXX)" } })
+                                @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.EditorFor(x => x.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入您的地址" } })
+                                @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.DropDownList("ServiceID", (List<SelectListItem>)Model.OptionService, new { @class = "form -control custom-select" })
+                                @Html.ValidationMessageFor(x => x.ServiceID, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入您的電子郵件" } })
+                                @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-outline-primary btn-block btn-border" id="btnSubmit" value="送出" />
+                                <input type="reset" class="displayNone" id="btnReset">
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @* 聯絡我們 *@
+    <section class="" id="section-ContactUs">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-4">
+                <div class="contactUnit" id="contactUnit-BusinessHour">
+                    <div class="contact-Title">營業時間</div>
+                    <div class="divider-left"></div>
+                    <div class="contact-Content">
+                        <ul>
+                            <li>星期一 - 星期五 :  09:00  ~  18:00</li>
+                            <li>星期六 :  10:30  ~  18:00</li>
+                            <li>星期日 : 公休</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-4">
+                <div class="contactUnit" id="contactUnit-ContactUs">
+                    <div class="contact-Title">聯絡我們</div>
+                    <div class="divider-left"></div>
+                    <div class="contact-Content">
+                        <ul>
+                            <li>新北市汐止區</li>
+                            <li>忠孝東路426號</li>
+                            <li>(02) 8648 - 2536</li>
+                            <li class="mail">cascocleaningservice@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4">
+                <div class="contactUnit" id="contactUnit-GoogleMap"></div>
+            </div>
+        </div>
+    </section>
+
+    @* 頁尾 *@
+    <footer>
+        <div class="copyright">© 2018 MA System Integration Co. All rights reserved</div>
+    </footer>
+
+    <script>
+        Config.SiteRoot = "@Url.Content("~/")";
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿@media only screen and (max-width: 744px) {
+    .paddingBlock {
+        padding: 40px 20px 40px 20px !important;
+    }
+
+    .intro{
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 496px) {
+    .intro{
+        width:80%;
+    }
+
+    .reservation-Block{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .reservationForm, .reservationFlow {
+        width: 95%;
+    }
+}

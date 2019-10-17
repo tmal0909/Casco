@@ -1,0 +1,3 @@
+﻿var Config = {
+    SiteRoot: null
+};
